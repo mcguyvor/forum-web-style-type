@@ -1,14 +1,17 @@
 import React from 'react';
-const ForumItem =({forums,setForums})=>{
-    console.log('test',forums)
+import {useSelector} from 'react-redux';
+const ForumItem =()=>{
+    const formList = useSelector((state)=>state.formList);
     return(
         <div>
-            {forums.length>0 && forums.map((idx)=>{
+            {formList.length>0 && formList.map((idx)=>{
+                const input = idx.payload.input
                 return(
                     <div className='card'>
                        <div className='body'>
-                        <h5 className='card-title'>{idx.title}</h5>
-                        <p className='card-title'>{idx.detail}</p>
+                        <h5 className='card-title'>{input.title}</h5>
+                        <p className='card-title'>{input.detail}</p>
+                        <p>{input.user}</p>
                        </div>
                     </div>
                 );
@@ -17,4 +20,5 @@ const ForumItem =({forums,setForums})=>{
         </div>
     );
 }
+
 export default ForumItem;

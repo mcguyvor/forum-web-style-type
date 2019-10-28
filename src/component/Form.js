@@ -1,17 +1,24 @@
 import React,{useState} from 'react';
-import uuid from 'uuid';
+import {useDispatch} from 'react-redux';
+import {addForm} from '../action/index';
 //import Select from 'react-select';
 //import makeAnimated from 'react-select/animated';// https://react-select.com/home
-const Form=({forum,newForum})=>{
+const Form=()=>{
     const [input,setInput]=useState('');
+    //For useDispatch function and store action  in const 
+    const dispatch = useDispatch();
+    const submitForm=(input)=>dispatch(addForm(input));
+   // const submitForm = useDispatch((input)=> addForm(input)); //then use addForm inside the handleSubmit
+
     const handleChange=(e)=>{
         setInput({...input,[e.target.name]:e.target.value});
     }
    // const animatedComponents= makeAnimated();
     const handleSubmit=(e)=>{
-        const currentDate = new Date();
+       // const currentDate = new Date(); move to formReducer
         e.preventDefault();
-        newForum([...forum,{input,forumId:uuid(),publishTime : currentDate}]);
+        submitForm({input})
+       // move to Formreducer newForum([...forum,{input,forumId:uuid(),publishTime : currentDate}]);
         e.target.reset();
     }
     const options = [
@@ -19,6 +26,7 @@ const Form=({forum,newForum})=>{
         { value: 'Politic', label: 'Politic' },
         { value: 'Financial', label: 'Financial' }
       ]
+      
     return(
         <div>
             <form onSubmit={handleSubmit} >
