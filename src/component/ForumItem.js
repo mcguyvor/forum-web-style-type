@@ -1,17 +1,19 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 const ForumItem =()=>{
-    const formList = useSelector((state)=>state.formList);
+    const formList = useSelector((state)=>state.formList); // connect redux state object to local const
     return(
         <div>
             {formList.length>0 && formList.map((idx)=>{
-                const input = idx.payload.input
+                const publishDate = idx.publishime;
+                const detail = idx.detail; 
                 return(
                     <div className='card'>
                        <div className='body'>
-                        <h5 className='card-title'>{input.title}</h5>
-                        <p className='card-title'>{input.detail}</p>
-                        <p>{input.user}</p>
+                        <h5 className='card-title'>{detail.title}</h5>
+                        <p className='card-title'>{detail.detail}</p>
+                        <p>{detail.user}</p>
+                        <p>{publishDate}</p>
                        </div>
                     </div>
                 );

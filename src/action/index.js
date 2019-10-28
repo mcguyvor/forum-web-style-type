@@ -6,7 +6,7 @@ export const addForm=(value)=>{
             type:'ADD_FORM',
             payload:{formId: id,
                     publishTime: currentTime,
-                    payload: value
+                    detail: value // value is in object
             }
         }
         )
