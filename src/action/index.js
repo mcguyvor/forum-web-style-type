@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+
 export const addForm=(value)=>{
         const id = uuid();
         const currentTime = new Date();
@@ -6,8 +7,14 @@ export const addForm=(value)=>{
             type:'ADD_FORM',
             payload:{formId: id,
                     publishTime: currentTime,
-                    detail: value // value is in object
+                    value // value is in object
             }
         }
         )
+};
+export const fetchData=(dataArr)=>{
+        return({
+                type:'FETCH_DATA',
+                dataArr
+        })
 };

@@ -1,11 +1,12 @@
 import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {addForm} from '../action/index';
+import firebase from '../firebase'
 //import Select from 'react-select';
 //import makeAnimated from 'react-select/animated';// https://react-select.com/home
 const Form=()=>{
     const initialValue = {category:'none'};
-    const [input,setInput]=useState(initialValue);
+    const [input,setInput]=useState(initialValue);   
     //For useDispatch function and store action  in const 
     const dispatch = useDispatch();
     const submitForm=(input)=>dispatch(addForm(input)); //use dispatch from above
@@ -20,6 +21,7 @@ const Form=()=>{
        // const currentDate = new Date(); move to formReducer
         e.preventDefault();
         submitForm(input)
+        
        // move to Formreducer newForum([...forum,{input,forumId:uuid(),publishTime : currentDate}]);
        e.target.reset(initialValue);
        setInput('');// put initial value for select category to none
