@@ -23,11 +23,9 @@ function App() {
     const db = firebase.firestore();
     const data = await db.collection('forums').get();
     const dataArr = data.docs.map(idx=>idx.data());
+    console.log(dataArr);
     dispatch(fetchData(dataArr));
   },[]);
-    
-  
-
   
   return (
     <div className="App">

@@ -1,1 +1,0 @@
-import fetchData from '../action/indfetchDataex';

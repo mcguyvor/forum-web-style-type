@@ -16,7 +16,7 @@ const ForumItem =()=>{
                 const publishDate = idx.publishime;
                 const detail = idx.detail; 
                 return(
-                    <div className='card'>
+                    <div className='card' key={idx.formId}>
                        <div className='body'>
                         <h5 className='card-title'>{detail}</h5>
                         <p className='card-title'>{detail}</p>

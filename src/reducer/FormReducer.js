@@ -9,7 +9,7 @@ export default function(state=[],action){
             db.collection('forums').doc(action.payload.formId).set(action.payload);
             return [...state,action.payload]; // push new list to state
         case 'FETCH_DATA':
-        return [...state,action.dataArr];
+        return action.dataArr;
         default: return state;
     }
 }
