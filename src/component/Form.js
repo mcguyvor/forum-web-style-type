@@ -16,6 +16,11 @@ const Form=()=>{
         setInput({...input,[e.target.name]:e.target.value});
         console.log(input);
     }
+
+    const handleImgChange=(e)=>{ //not working need to fix
+        setInput({...input,file:e.target.files[0]});
+        console.log(input); 
+    }
    // const animatedComponents= makeAnimated();
     const handleSubmit=(e)=>{
        // const currentDate = new Date(); move to formReducer
@@ -44,7 +49,7 @@ const Form=()=>{
                
                 <label htmlFor='category'>Category</label> 
                     <select name ='category'onChange={handleChange} value={input.category}>
-                        <option  >Select</option>
+                        <option>Select</option>
                        {options.map(idx=>{
                            return(
                            <option value={idx.value}>{idx.label}</option>
@@ -54,7 +59,9 @@ const Form=()=>{
                 <label htmlFor='by'>By</label>
                 <input type='text' name='user' id='by' onChange={handleChange}/>
                 
-               
+                <label htmlFor='img'>Image url</label>
+                <input type='text' name='imgUrl' id='img' onChange={handleChange}/>
+                
                 <button type='submit'>Submit</button>
             </form>
         </div>

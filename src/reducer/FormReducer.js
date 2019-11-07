@@ -2,7 +2,7 @@ import {addForm} from '../action/index';
 import firebase from '../firebase';
 export default function(state=[],action){
     const db = firebase.firestore();
-    db.collection('forums').doc()
+    db.collection('forums').doc();
     switch(action.type){
         case 'ADD_FORM':
             console.log('test');

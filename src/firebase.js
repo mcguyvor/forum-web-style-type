@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import 'firebase/auth';
 const firebaseConfig = {
     apiKey: "AIzaSyCLkwvrIUdMVmWCLGjUBZZTOhiXS1BiKjE",
     authDomain: "forumwebstyle.firebaseapp.com",
@@ -10,4 +11,4 @@ const firebaseConfig = {
     measurementId: "G-NG4XEBXTCW"
   };
 firebase.initializeApp(firebaseConfig);
-export default firebase;
+export  default firebase;

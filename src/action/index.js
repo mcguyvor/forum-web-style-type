@@ -18,3 +18,9 @@ export const fetchData=(dataArr)=>{
                 dataArr
         })
 };
+export const loginForm=(loginData)=>{
+        return({
+                type:'LOGIN_FORM',
+                loginData
+        })
+};

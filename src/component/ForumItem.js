@@ -1,6 +1,5 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import firebase from 'firebase'
 const ForumItem =()=>{
     
       
@@ -17,6 +16,8 @@ const ForumItem =()=>{
                 const detail = idx.detail; 
                 return(
                     <div className='card' key={idx.formId}>
+                    {console.log(idx.value.imgUrl)};
+                    <img src='https://unsplash.com/photos/CdYjOLATLvY' className="card-img-top" alt={idx.value.imgUrl}/>
                        <div className='body'>
                         <h5 className='card-title'>{detail}</h5>
                         <p className='card-title'>{detail}</p>
