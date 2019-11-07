@@ -6,6 +6,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import {fetchData} from './action';
 import Home from './component/Home';
 import LoginForm from './component/LoginForm';
+import Signup from'./component/Signup';
 function App() {
   const [forum,newForum]=useState([]);
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
       <Route exact path='/' component={Home}/>
       <Route exact path='/admin' component={Form}/>
       <Route exact path='/login' component={LoginForm}/>
+      <Route exact path='/signup' component={Signup}/>
     </Switch>
     );
   
