@@ -3,14 +3,14 @@ import {useDispatch} from 'react-redux';
 import Nav from '../component/Nav';
 import firebase from '../firebase';
 import {editForumAction} from '../action/index';
-import {Link} from 'react-router-dom';
-const EditForum =(props)=>{
+import {withRouter} from 'react-router-dom';
+const EditForum =(props,{history})=>{
     const options = [
         { value: 'food', label: 'Food' },
         { value: 'Politic', label: 'Politic' },
         { value: 'Financial', label: 'Financial' }
       ];
-
+      
     
     const [input,setInput]=useState(''); 
     const [fetch,setFetch] = useState(false);//for showing frm when fetch finish
@@ -38,6 +38,9 @@ const EditForum =(props)=>{
         e.preventDefault();
         editSubmit(input);
         setDone(true);
+    }
+    const gohome=()=>{
+        props.history.push('/');
     }
     const editForum =()=>{
         return(
@@ -67,10 +70,7 @@ const EditForum =(props)=>{
                 <button type='submit' className='btn btn-info title'>Save change</button>
             
                 </form>
-                {editDone? <div>
-                                <h4 className='title'>Edit success !</h4>
-                             <Link to='/'>Go back</Link>
-                            </div>: null }
+               
             </div>
         );
     }
@@ -78,6 +78,10 @@ const EditForum =(props)=>{
         <div>
             <Nav/>
             {fetch && editForum()}
+            {editDone? <div>
+                                <h4 className='title'>Edit success !</h4>
+                             <button onClick={gohome}>Go home</button>
+                            </div>: null }
         </div>
     );
 }

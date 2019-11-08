@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {Route,Switch,BrowserRouter} from 'react-router-dom';
+import {Route,Switch,BrowserRouter,withRouter} from 'react-router-dom';
 import Form from './component/Form';
 import firebase from './firebase';
 import {useDispatch,useSelector} from 'react-redux';
@@ -9,7 +9,8 @@ import LoginForm from './component/LoginForm';
 import Signup from'./component/Signup';
 import EditForum from './component/EditForum';
 import ForumItem from './component/ForumItem';
-function App() {
+import loadjs from 'loadjs';
+function App(props) {
   const [forum,newForum]=useState([]);
   const dispatch = useDispatch();
   const formlist = useSelector((state)=> state);
@@ -21,7 +22,7 @@ function App() {
     //console.log('form list',formlist);
   },[]); 
   const renderRoute=()=>(
-    <Switch>
+    <Switch location={props.history.location} >
       <Route exact path='/' component={Home}/>
       <Route exact path='/admin' component={Form}/>
       <Route exact path='/login' component={LoginForm}/>
@@ -33,11 +34,11 @@ function App() {
   
   return (
     <div>
-      <BrowserRouter>
+     
         {renderRoute()}  
-      </BrowserRouter>
+      
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

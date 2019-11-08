@@ -5,6 +5,7 @@
   "dependencies": {
     "firebase": "^7.2.3",
     "firebaseui": "^4.2.0",
+    "loadjs": "^4.0.1",
     "moment": "^2.24.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
