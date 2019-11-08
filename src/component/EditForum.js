@@ -1,30 +1,8 @@
-import React,{useState,useEffect,Component} from 'react';
+import React,{useState,useEffect} from 'react';
 import Nav from '../component/Nav';
 import firebase from '../firebase';
-/*class EditForum extends Component{
-    constructor (props) {
-        super(props);
-        this.state={title:'',detail:'',category:'',user:'',imgUrl:'',fetch:false}; 
-        this.handleChange = this.handleChange.bind(this);
-    }
-        options = [
-        { value: 'food', label: 'Food' },
-        { value: 'Politic', label: 'Politic' },
-        { value: 'Financial', label: 'Financial' }
-      ];
-       
-      async componentDidMount(){
-        const db = firebase.firestore();
-        const forumId = this.props.match.params.id;
-        const data = await this.db.collection('forums').doc(forumId).get();
-        this.setState({input:data.data(), fetch:true});
 
-      }
-       handleChange(e){
-        this.setState(({[e.target.name]:e.target.value}));
-    }
-}
-/*const EditForum =(props)=>{
+const EditForum =(props)=>{
     const options = [
         { value: 'food', label: 'Food' },
         { value: 'Politic', label: 'Politic' },
@@ -58,10 +36,10 @@ import firebase from '../firebase';
             <div className='form-group '>
                 <form onSubmit={handleSubmit} >
                 <label htmlFor='title' className='title'>Title</label>
-                <input type='text'  name='title'id='title' onChange={handleChange} value={input.value.title}/>
+                <input type='text'  name='title'id='title' onChange={handleChange} value={input.title}/>
                
                 <label htmlFor='detail' className='title'>Detail</label>
-                <input type='text' name='detail' id='detail' onChange={handleChange}/>
+                <input type='text' name='detail' id='detail' onChange={handleChange} value={input.detail}/>
                
                 <label htmlFor='category'className='title'>Category</label> 
                     <select name ='category'onChange={handleChange} value={input.category}> 
@@ -73,10 +51,10 @@ import firebase from '../firebase';
                            })}
                     </select>
                 <label htmlFor='by' className='title'>By</label>
-                <input type='text' name='user' id='by' onChange={handleChange}/>
+                <input type='text' name='user' id='by' onChange={handleChange} value={input.user}/>
                 
                 <label htmlFor='img' className='title'>Image url</label>
-                <input type='text' name='imgUrl' id='img' onChange={handleChange}/>
+                <input type='text' name='imgUrl' id='img' onChange={handleChange} value={input.imgUrl}/>
                 
                 <button type='submit' className='btn btn-info title'>Save change</button>
             
@@ -84,7 +62,6 @@ import firebase from '../firebase';
             </div>
         );
     }
-    
     return(
         <div>
             <Nav/>
@@ -92,8 +69,6 @@ import firebase from '../firebase';
         </div>
     );
 }
-*/
-const EditForum=()=>{
-    return <h2>test</h2>
-}
+
+
 export default EditForum;
