@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 import Nav from '../component/Nav';
 import firebase from '../firebase';
-
+import {editForumAction} from '../action/index';
+import {Link} from 'react-router-dom';
 const EditForum =(props)=>{
     const options = [
         { value: 'food', label: 'Food' },
@@ -12,7 +14,11 @@ const EditForum =(props)=>{
     
     const [input,setInput]=useState(''); 
     const [fetch,setFetch] = useState(false);//for showing frm when fetch finish
+    const [editDone,setDone] =useState(false);
+
+    const dispatch = useDispatch();
     
+    const editSubmit = value => dispatch(editForumAction(value));
     const db = firebase.firestore();
 
     useEffect(async()=>{
@@ -28,8 +34,10 @@ const EditForum =(props)=>{
         console.log(input);
         
     }
-    const handleSubmit=()=>{
-
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        editSubmit(input);
+        setDone(true);
     }
     const editForum =()=>{
         return(
@@ -59,6 +67,10 @@ const EditForum =(props)=>{
                 <button type='submit' className='btn btn-info title'>Save change</button>
             
                 </form>
+                {editDone? <div>
+                                <h4 className='title'>Edit success !</h4>
+                             <Link to='/'>Go back</Link>
+                            </div>: null }
             </div>
         );
     }

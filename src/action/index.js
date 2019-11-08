@@ -32,3 +32,9 @@ export const deleteItem=forumId=>{
                 forumId
         })
 }
+export const editForumAction=value=>{
+        return({
+                type:'EDIT_FORUM',
+                value
+        })
+}

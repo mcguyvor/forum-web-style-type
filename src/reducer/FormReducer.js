@@ -18,6 +18,11 @@ export default function(state=[],action){
             const newForumList = state.filter(idx=>idx.formId!==action.forumId); //filter only the array that dont match the formId
           db.collection('forums').doc(matchDelete.formId).delete();//delete collection with match ID
            return newForumList; //return the new forums list to redux for client side
+        case 'EDIT_FORUM':
+            const matchEditForum = state.find(idx=>idx.formId===action.value.formId);
+            console.log('test edit', matchEditForum);
+            db.collection('forums').doc(matchEditForum.formId).set(action.value);
+            return [...state,matchEditForum]; 
         default: return state;
     }
 }
