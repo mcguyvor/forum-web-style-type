@@ -1,15 +1,40 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,Component} from 'react';
 import Nav from '../component/Nav';
 import firebase from '../firebase';
-const EditForum =(props)=>{
+/*class EditForum extends Component{
+    constructor (props) {
+        super(props);
+        this.state={title:'',detail:'',category:'',user:'',imgUrl:'',fetch:false}; 
+        this.handleChange = this.handleChange.bind(this);
+    }
+        options = [
+        { value: 'food', label: 'Food' },
+        { value: 'Politic', label: 'Politic' },
+        { value: 'Financial', label: 'Financial' }
+      ];
+       
+      async componentDidMount(){
+        const db = firebase.firestore();
+        const forumId = this.props.match.params.id;
+        const data = await this.db.collection('forums').doc(forumId).get();
+        this.setState({input:data.data(), fetch:true});
+
+      }
+       handleChange(e){
+        this.setState(({[e.target.name]:e.target.value}));
+    }
+}
+/*const EditForum =(props)=>{
     const options = [
         { value: 'food', label: 'Food' },
         { value: 'Politic', label: 'Politic' },
         { value: 'Financial', label: 'Financial' }
       ];
-    const initialValue = {category:'none'};
-    const [input,setInput]=useState(initialValue); 
-    const [fetch,setFetch] = useState(false);//for showing form when fetch finish
+
+    
+    const [input,setInput]=useState(''); 
+    const [fetch,setFetch] = useState(false);//for showing frm when fetch finish
+    
     const db = firebase.firestore();
 
     useEffect(async()=>{
@@ -20,7 +45,7 @@ const EditForum =(props)=>{
     console.log(data.data());
     },[]);
 
-    const handleChange=(e)=>{
+    function handleChange(e){
         setInput({...input,[e.target.name]:e.target.value});
         console.log(input);
         
@@ -66,5 +91,9 @@ const EditForum =(props)=>{
             {fetch && editForum()}
         </div>
     );
+}
+*/
+const EditForum=()=>{
+    return <h2>test</h2>
 }
 export default EditForum;

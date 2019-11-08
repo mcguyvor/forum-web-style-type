@@ -5,10 +5,12 @@ export const addForm=(value)=>{
         const currentTime = new Date();
         return({
             type:'ADD_FORM',
-            payload:{formId: id,
-                    publishTime: currentTime,
-                    value // value is in object
-            }
+            value,formId: id,publishTime: currentTime
+            //payload:{ value
+                    //formId: id,
+                    //publishTime: currentTime,
+                     // value is in object
+            //}
         }
         )
 };

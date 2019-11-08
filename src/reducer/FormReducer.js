@@ -5,8 +5,9 @@ export default function(state=[],action){
     db.collection('forums').doc();
     switch(action.type){
         case 'ADD_FORM':
-            console.log('test');
-            db.collection('forums').doc(action.payload.formId).set(action.payload);
+            console.log('test',action.value);
+            const {value,publishTime,formId} = action;
+            db.collection('forums').doc(action.formId).set({...value,publishTime: publishTime,formId:formId});
             return [...state,action.payload]; // push new list to state
         
         case 'FETCH_DATA':

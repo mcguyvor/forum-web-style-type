@@ -17,11 +17,11 @@ const Home=({history})=>{
             <div className='card-columns'>
             {list.length>0 && list.map(idx=>(
                     <div className='card  border-light mb-3'>
-                        <div className="card-header">{idx.value.title}</div>
-                        {idx.value.imgUrl!==undefined? <img src={idx.value.imgUrl} alt={idx.value.imgUrl} className='card-img-top'/>: null}
+                        <div className="card-header">{idx.title}</div>
+                        {idx.imgUrl!==undefined? <img src={idx.imgUrl} alt={idx.imgUrl} className='card-img-top'/>: null}
                         <div className="card-body">
                             <h5 className="card-title">Light card title</h5>
-                            <p className="card-text">{idx.value.detail}</p>
+                            <p className="card-text">{idx.detail}</p>
                             <p class="card-text"><small class="text-muted">{moment(idx.publishtime).subtract(10, 'days').calendar()}</small></p>
                             <button className="btn btn-primary" onClick={()=>readFullForum(idx.formId)}>Read article</button>
                             <button className="btn btn-primary" onClick={()=>onEditForum(idx.formId)}>Edit</button>
