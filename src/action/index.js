@@ -24,3 +24,9 @@ export const loginForm=(loginData)=>{
                 loginData
         })
 };
+export const deleteItem=forumId=>{
+        return({
+                type:'DELETE_ITEM',
+                forumId
+        })
+}
