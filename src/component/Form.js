@@ -11,7 +11,7 @@ const Form=()=>{
     const dispatch = useDispatch();
     const submitForm=(input)=>dispatch(addForm(input)); //use dispatch from above
    // const submitForm = useDispatch((input)=> addForm(input)); //then use addForm inside the handleSubmit
-
+    const [finish,setFinish] = useState(false);
     const handleChange=(e)=>{
         setInput({...input,[e.target.name]:e.target.value});
         console.log(input);
@@ -31,6 +31,7 @@ const Form=()=>{
        e.target.reset(initialValue);
        setInput('');// put initial value for select category to none
        console.log(input.title)
+       setFinish(true);
     }
     const options = [
         { value: 'food', label: 'Food' },
@@ -64,6 +65,13 @@ const Form=()=>{
                 
                 <button type='submit'>Submit</button>
             </form>
+            {finish? <div>
+                        <h3>Add done</h3>
+                        <button className='btn'><a href='/admin'>Return to Admin</a></button>
+                    </div>
+
+            : null}
+            
         </div>
     );
 }

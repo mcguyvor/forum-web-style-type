@@ -1,34 +1,37 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {useSelector} from 'react-redux';
-const ForumItem =()=>{
-    
-      
-    const formList = useSelector((state)=>state.formList); // connect redux state object to local const
+import firebase from '../firebase';
+import Nav from './Nav';
+
+const ForumItem =(props)=>{
+    //const formList = useSelector((state)=>state.formList); // connect redux state object to local const
   //  const db =  firebase.firestore();
    // db.collection('forums').get().then((snapshot)=>{
    //     console.log(snapshot);
   //  })
+  const [state,setState] = useState('');
+  const [loading,setLoading] =useState(false);
+  const db = firebase.firestore();
+    useEffect(async()=>{
+        const forumId = props.match.params.id;
+        const data = await db.collection('forums').doc(forumId).get();
+        setState(data.data());
+        setLoading(true);
+    },[]);
 
     return(
         <div>
-            {formList.length>0 && formList.map((idx)=>{
-                const publishDate = idx.publishime;
-                const detail = idx.detail; 
-                return(
-                    <div className='card' key={idx.formId}>
-                    {console.log(idx.value.imgUrl)};
-                    <img src='https://unsplash.com/photos/CdYjOLATLvY' className="card-img-top" alt={idx.value.imgUrl}/>
-                       <div className='body'>
-                        <h5 className='card-title'>{detail}</h5>
-                        <p className='card-title'>{detail}</p>
-                        <p>{detail}</p>
-                        <p>{publishDate}</p>
-                       </div>
-                    </div>
-                );
-            } 
-                )}
+            <Nav/>
+             {loading? 
+                <div className='container'>
+                    <img src={state.imgUrl}/>
+                    <h3>{state.title}</h3>
+                </div> 
+                : 
+                <h3>Loading...</h3>}
         </div>
+       
+        
     );
 }
 

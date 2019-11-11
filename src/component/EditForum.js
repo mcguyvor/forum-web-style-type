@@ -3,8 +3,7 @@ import {useDispatch} from 'react-redux';
 import Nav from '../component/Nav';
 import firebase from '../firebase';
 import {editForumAction} from '../action/index';
-import {withRouter} from 'react-router-dom';
-const EditForum =(props,{history})=>{
+const EditForum =(props)=>{
     const options = [
         { value: 'food', label: 'Food' },
         { value: 'Politic', label: 'Politic' },
@@ -39,12 +38,12 @@ const EditForum =(props,{history})=>{
         editSubmit(input);
         setDone(true);
     }
-    const gohome=()=>{
-        props.history.push('/');
-    }
+    
+    
     const editForum =()=>{
         return(
             <div className='form-group '>
+               
                 <form onSubmit={handleSubmit} >
                 <label htmlFor='title' className='title'>Title</label>
                 <input type='text'  name='title'id='title' onChange={handleChange} value={input.title}/>
@@ -76,11 +75,10 @@ const EditForum =(props,{history})=>{
     }
     return(
         <div>
-            <Nav/>
             {fetch && editForum()}
             {editDone? <div>
                                 <h4 className='title'>Edit success !</h4>
-                             <button onClick={gohome}>Go home</button>
+                             <button><a  href='/admin'>Go home</a></button>
                             </div>: null }
         </div>
     );
