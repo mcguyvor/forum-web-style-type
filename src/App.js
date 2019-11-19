@@ -17,11 +17,14 @@ function App() {
   const formlist = useSelector((state)=> state);
   const db = firebase.firestore();
 
-  useEffect(async()=>{
+  useEffect(()=>{
+    async function fetch(){
     const data = await db.collection('forums').get();
     const dataArr = data.docs.map(idx=>idx.data());
     dispatch(fetchData(dataArr));
+    }
     //console.log('form list',formlist);
+    fetch();
   },[]); 
   
   

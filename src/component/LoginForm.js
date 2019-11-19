@@ -2,7 +2,7 @@
 import React,{useState,useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import firebase from '../firebase';
-require('firebase/auth')
+//require('firebase/auth')
 
 const LoginForm=()=>{
     const initial = {
